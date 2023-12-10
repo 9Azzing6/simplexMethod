@@ -115,11 +115,16 @@ proc simplexTableToString(m: matrix, i_ind: int, j_ind: int, hor_x, vert_x: seq[
                 result.add("  |  ")
         result.add("  |")
         if i != m.getRows() - 1:
-            result.add("\n")
+            result.add("\n")    
 
-    # result = "hello"     
-    
+proc checkOP(vert_x: seq[string]): bool =
+    result = false
+    if "0" in vert_x:
+        result = true
 
+proc findOP(m: matrix, hor_x, vert_x: seq[string]): matrix =
+    echo "поиск опорного плана"
+    result = raspMatrix(2, 2)
 
 proc firstTry(m: var matrix): void =
     var
@@ -145,13 +150,5 @@ proc firstTry(m: var matrix): void =
 
 # echo mat.matrixToString()
 echo "*******************************"
-# echo "_____"
+
 firstTry(mat)
-# echo mat.matrixToString
-
-# var
-#     hor_x: seq[string] = @["x1", "x2"]
-#     vert_x: seq[string] = @["x4", "x3", "x5"]
-
-# echo simplexTableToString(mat, 0, 1, hor_x, vert_x)
-
